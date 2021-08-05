@@ -63,7 +63,7 @@ impl<'a, T: PartialEq> Iterator for SubslSplit<'a, T> {
 
         // Empty slice case, just return the whole input
         // and exhaust the rest of the state in the iterator.
-        if self.ndl.len() == 0 {
+        if self.ndl.is_empty() {
             self.end = self.hay.len();
             self.start = self.end;
             return Some(self.hay);
