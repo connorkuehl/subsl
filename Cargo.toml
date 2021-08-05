@@ -1,0 +1,17 @@
+[package]
+name = "subsl"
+version = "0.1.0"
+authors = ["Connor Kuehl <cipkuehl@gmail.com>"]
+edition = "2018"
+license = "Apache-2.0"
+homepage = "https://github.com/connorkuehl/subsl"
+repository = "https://github.com/connorkuehl/subsl"
+description = "Adds fun new features to Rust slices"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[dev-dependencies]
+rstest = "0.11"
