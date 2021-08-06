@@ -7,7 +7,7 @@
 //! # Examples
 //!
 //! ```rust
-//! use subsl::SubslSplitter;
+//! use subsl::Splitter;
 //!
 //! let http_get: &[u8] = &*b"GET / HTTP/1.0\r\n\r\nsome data in the body";
 //! let sep = b"\r\n\r\n";
@@ -21,27 +21,27 @@
 
 use std::iter::Iterator;
 
-pub trait SubslSplitter<'a, T: PartialEq> {
-    fn subsl_split(&'a self, pat: &'a [T]) -> SubslSplit<'a, T>;
+pub trait Splitter<'a, T: PartialEq> {
+    fn subsl_split(&'a self, pat: &'a [T]) -> Split<'a, T>;
 }
 
-impl<'a, T> SubslSplitter<'a, T> for &'a [T]
+impl<'a, T> Splitter<'a, T> for &'a [T]
 where
     T: PartialEq,
 {
-    fn subsl_split(&'a self, pat: &'a [T]) -> SubslSplit<'a, T> {
-        SubslSplit::new(self, pat)
+    fn subsl_split(&'a self, pat: &'a [T]) -> Split<'a, T> {
+        Split::new(self, pat)
     }
 }
 
-pub struct SubslSplit<'a, T: PartialEq> {
+pub struct Split<'a, T: PartialEq> {
     start: usize,
     end: usize,
     ndl: &'a [T],
     hay: &'a [T],
 }
 
-impl<'a, T: PartialEq> SubslSplit<'a, T> {
+impl<'a, T: PartialEq> Split<'a, T> {
     pub fn new(haystack: &'a [T], needle: &'a [T]) -> Self {
         Self {
             start: 0,
@@ -52,7 +52,7 @@ impl<'a, T: PartialEq> SubslSplit<'a, T> {
     }
 }
 
-impl<'a, T: PartialEq> Iterator for SubslSplit<'a, T> {
+impl<'a, T: PartialEq> Iterator for Split<'a, T> {
     type Item = &'a [T];
 
     fn next(&mut self) -> Option<Self::Item> {
