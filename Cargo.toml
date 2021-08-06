@@ -8,6 +8,7 @@ homepage = "https://github.com/connorkuehl/subsl"
 repository = "https://github.com/connorkuehl/subsl"
 description = "Adds fun new features to Rust slices"
 readme = "README.md"
+exclude = [ ".gitignore", ".github/*" ]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
