@@ -9,7 +9,7 @@ with subsl, you can!
 ## Examples
 
 ```rust
-use subsl::SubslSplitter;
+use subsl::Splitter;
 
 let http_get: &[u8] = &*b"GET / HTTP/1.0\r\n\r\nsome data in the body";
 let sep = b"\r\n\r\n";
